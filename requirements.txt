@@ -1,0 +1,8 @@
+requests
+pyrogram
+Tgcrypto
+seedrcc
+imageio[ffmpeg]
+pymongo
+dnspython
+imgbbpy
