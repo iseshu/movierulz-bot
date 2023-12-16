@@ -26,7 +26,7 @@ async def link_handler(client, message):
         data['description'] = description
         ims= await client.send_photo(chat_id=config.channel_id,photo=image, caption=f"<b>**{title}**</b>\n\n`{description}`")
         data['image'] = {"link":store_image(image),"file_id":ims.photo.file_id,"file_unique_id":ims.photo.file_unique_id}
-        data['id'] = ims.id
+        data['_id'] = ims.id
         data['files'] = []
         data['screenshots'] = []
         msg = await client.send_message(config.channel_id,"Admin Uploading the video to telegram wait for some time")
@@ -34,12 +34,12 @@ async def link_handler(client, message):
         rmsg = await message.reply_text("Uploading [{}]({}) to telegram \n[Progress]({})".format(title,
                                                                                            f"https://t.me/c/{str(config.channel_id).replace('-100','')}/{ims.id}",
                                                                                            f"https://t.me/c/{str(config.channel_id).replace('-100','')}/{msg.id}"))
-        torrents = torrents[::-1]
+        torrents = torrents
         for torrent in torrents:
             uri = torrent['magnet']
             deleteAll()
             upload_torrent(uri)
-            time.sleep(60)
+            time.sleep(40)
             try:
                 try:
                     file_name,url = select_File(respose())
