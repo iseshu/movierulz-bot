@@ -34,9 +34,8 @@ async def screenshots(client):
     for i in range(1,11):
         timestamp +=n
         capture_frame("video.mkv",timestamp , f"ss/{i}.jpg")
-        images.append(InputMediaPhoto(f"ss/{i}.jpg",caption=f"Screenshot at {seconds_to_hms(timestamp)}"))
+        images.append(InputMediaPhoto(f"ss/{i}.jpg",caption=f"Screenshot at {seconds_to_hms(timestamp)}",has_spoilers=True))
         list.append({"image":store_image(f"ss/{i}.jpg"),"seconds":timestamp,"timestamp":seconds_to_hms(timestamp)})
     await client.send_media_group(config.channel_id,images)
     for i in range(1,11):os.remove(f"ss/{i}.jpg")
     return list
-    
