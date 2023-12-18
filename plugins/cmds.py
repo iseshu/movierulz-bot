@@ -29,7 +29,7 @@ async def link_handler(client, message):
         data['_id'] = ims.id
         data['files'] = []
         data['screenshots'] = []
-        msg = await client.send_message(config.channel_id,"Admin Uploading the video to telegram wait for some time")
+        msg = await client.send_message(config.onwer_id,"Admin Uploading the video to telegram wait for some time")
         time.sleep(3)
         rmsg = await message.reply_text("Uploading [{}]({}) to telegram \n[Progress]({})".format(title,
                                                                                            f"https://t.me/c/{str(config.channel_id).replace('-100','')}/{ims.id}",
